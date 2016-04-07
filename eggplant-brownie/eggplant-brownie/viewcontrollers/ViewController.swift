@@ -15,11 +15,22 @@ class ViewController: UIViewController {
     
     @IBAction func add(){
         
+        if(nameField == nil || hapinessField == nil){
+            return
+        }
         
-        let name : String = nameField.text!
-        let hapiness : String = hapinessField.text!
         
-        print("eaten: \(name) \(hapiness)!")
+        let name = nameField!.text
+        let hapiness = Int(hapinessField!.text!)
+        
+        if hapiness == nil{
+            return
+        }
+        
+        let meal = Meal(name: name! ,  hapiness: hapiness!)
+        
+        
+        print("eaten: \(meal.name) \(meal.hapiness)!")
         
         
     }
