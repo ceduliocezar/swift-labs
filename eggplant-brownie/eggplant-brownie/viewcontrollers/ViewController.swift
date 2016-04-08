@@ -27,10 +27,14 @@ class ViewController: UIViewController {
             return
         }
         
-        let meal = Meal(name: name! ,  hapiness: hapiness!)
+        let meal = Meal(name: name! ,  happiness: hapiness!)
         
         
-        print("eaten: \(meal.name) \(meal.hapiness)!")
+        print("eaten: \(meal.name) \(meal.happiness)!")
+        
+        if let navigation = self.navigationController {
+            navigation.popViewControllerAnimated(true)
+        }
         
         
     }

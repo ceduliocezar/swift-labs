@@ -9,12 +9,12 @@
 class Meal{
     
     let name : String
-    let hapiness : Int
+    let happiness : Int
     var items = Array<Item>()
     
-    init(name:String , hapiness:Int){
+    init(name:String , happiness:Int){
         self.name = name
-        self.hapiness = hapiness
+        self.happiness = happiness
     }
     
     

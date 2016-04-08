@@ -1,6 +1,6 @@
 //
-//  ViewController.swift
-//  dynamic-meal-table
+//  MealsTableViewController.swift
+//  eggplant-brownie
 //
 //  Created by Cedulio Cezar on 08/04/16.
 //  Copyright © 2016 Cedulio Cezar. All rights reserved.
@@ -8,14 +8,8 @@
 
 import UIKit
 
-class ViewController: UITableViewController {
-    
-    let meals = ["eggplant brownie", "zucchini muffin"]
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-
+class MealsTableViewController: UITableViewController {
+    var meals = [ Meal(name: "Eggplant brownie", happiness: 5), Meal(name: "Zucchini Muffin", happiness: 3)]
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return meals.count
@@ -26,15 +20,12 @@ class ViewController: UITableViewController {
         let row = indexPath.row
         let meal = meals[row]
         
+        var cell =  UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: nil)
         
-        let cell =  UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: nil)
-        
-        cell.textLabel?.text = meal
-        
+        cell.textLabel?.text = meal.name
         
         return cell
-        
     }
+    
 
 }
-
