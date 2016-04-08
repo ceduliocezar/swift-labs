@@ -8,10 +8,17 @@
 
 import UIKit
 
+protocol AddMealDelegate{
+    func addMeal(meal : Meal)
+}
+
 class ViewController: UIViewController {
     
     @IBOutlet var nameField : UITextField!
     @IBOutlet var hapinessField : UITextField!
+    
+    
+    var delegate : AddMealDelegate?
     
     @IBAction func add(){
         
@@ -31,6 +38,9 @@ class ViewController: UIViewController {
         
         
         print("eaten: \(meal.name) \(meal.happiness)!")
+        
+        delegate!.add(meal)
+        
         
         if let navigation = self.navigationController {
             navigation.popViewControllerAnimated(true)
