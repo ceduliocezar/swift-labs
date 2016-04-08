@@ -30,7 +30,7 @@ class MealsTableViewController: UITableViewController, AddMealDelegate {
         return cell
     }
     
-    func add(meal : Meal){
+    func addMeal(meal : Meal){
         meals.append(meal)
         tableView.reloadData()
     }

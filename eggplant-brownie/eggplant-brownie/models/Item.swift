@@ -6,7 +6,7 @@
 //  Copyright © 2016 Cedulio Cezar. All rights reserved.
 //
 
-class Item{
+class Item: Equatable{
     let name: String
     let calories: Double
     init(name: String, calories: Double){
@@ -14,4 +14,8 @@ class Item{
         self.calories = calories
     }
     
+}
+
+func ==(first: Item, second: Item) -> Bool{
+    return first.name == second.name && first.calories == second.calories
 }
