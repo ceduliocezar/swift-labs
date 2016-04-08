@@ -14,7 +14,6 @@ class ViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("view did load")
     }
 
     
@@ -23,6 +22,7 @@ class ViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
         let row = indexPath.row
         let meal = meals[row]
         
@@ -30,6 +30,7 @@ class ViewController: UITableViewController {
         var cell =  UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: nil)
         
         cell.textLabel?.text = meal
+        
         
         return cell
         
