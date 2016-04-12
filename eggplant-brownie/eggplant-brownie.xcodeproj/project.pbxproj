@@ -12,6 +12,8 @@
 		1822CE571CB6D91300C9E6B4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1822CE561CB6D91300C9E6B4 /* ViewController.swift */; };
 		1822CE591CB6D96F00C9E6B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1822CE581CB6D96F00C9E6B4 /* Main.storyboard */; };
 		1822CF0B1CB7ECCA00C9E6B4 /* MealsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1822CF0A1CB7ECCA00C9E6B4 /* MealsTableViewController.swift */; };
+		189BF8011CBDA1330024AA9B /* NewItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189BF7FF1CBDA1330024AA9B /* NewItemViewController.xib */; };
+		189BF8031CBDA2740024AA9B /* NewItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189BF8021CBDA2740024AA9B /* NewItemViewController.swift */; };
 		18E6EE641CB689F4005B3591 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E6EE631CB689F4005B3591 /* AppDelegate.swift */; };
 		18E6EE6B1CB689F4005B3591 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18E6EE6A1CB689F4005B3591 /* Assets.xcassets */; };
 		18E6EE6E1CB689F4005B3591 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18E6EE6C1CB689F4005B3591 /* LaunchScreen.storyboard */; };
@@ -43,6 +45,8 @@
 		1822CE561CB6D91300C9E6B4 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1822CE581CB6D96F00C9E6B4 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		1822CF0A1CB7ECCA00C9E6B4 /* MealsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealsTableViewController.swift; sourceTree = "<group>"; };
+		189BF7FF1CBDA1330024AA9B /* NewItemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewItemViewController.xib; sourceTree = "<group>"; };
+		189BF8021CBDA2740024AA9B /* NewItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewItemViewController.swift; sourceTree = "<group>"; };
 		18E6EE601CB689F4005B3591 /* eggplant-brownie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "eggplant-brownie.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		18E6EE631CB689F4005B3591 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18E6EE6A1CB689F4005B3591 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -85,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				1822CE581CB6D96F00C9E6B4 /* Main.storyboard */,
+				189BF7FF1CBDA1330024AA9B /* NewItemViewController.xib */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -92,6 +97,7 @@
 		1822CE501CB6D79500C9E6B4 /* viewcontrollers */ = {
 			isa = PBXGroup;
 			children = (
+				189BF8021CBDA2740024AA9B /* NewItemViewController.swift */,
 				1822CE561CB6D91300C9E6B4 /* ViewController.swift */,
 				1822CF0A1CB7ECCA00C9E6B4 /* MealsTableViewController.swift */,
 			);
@@ -266,6 +272,7 @@
 			files = (
 				1822CE591CB6D96F00C9E6B4 /* Main.storyboard in Resources */,
 				18E6EE6E1CB689F4005B3591 /* LaunchScreen.storyboard in Resources */,
+				189BF8011CBDA1330024AA9B /* NewItemViewController.xib in Resources */,
 				18E6EE6B1CB689F4005B3591 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -293,6 +300,7 @@
 			files = (
 				1822CF0B1CB7ECCA00C9E6B4 /* MealsTableViewController.swift in Sources */,
 				1822CE551CB6D82000C9E6B4 /* Item.swift in Sources */,
+				189BF8031CBDA2740024AA9B /* NewItemViewController.swift in Sources */,
 				1822CE531CB6D7E500C9E6B4 /* Meal.swift in Sources */,
 				1822CE571CB6D91300C9E6B4 /* ViewController.swift in Sources */,
 				18E6EE641CB689F4005B3591 /* AppDelegate.swift in Sources */,
