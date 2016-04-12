@@ -12,10 +12,11 @@ protocol AddMealDelegate{
     func addMeal(meal : Meal)
 }
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, AddAnItemDelegate {
     
     @IBOutlet var nameField : UITextField!
     @IBOutlet var hapinessField : UITextField!
+    @IBOutlet var tableView: UITableView?
     
     
     var delegate : AddMealDelegate?
@@ -107,6 +108,33 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         
         return nil
+    }
+    
+    override func viewDidLoad() {
+        let newItemButton = UIBarButtonItem(title: "new item",
+                                            style: UIBarButtonItemStyle.Plain,
+                                            target: self,
+                                            action: Selector("showNewItem"))
+        
+        navigationItem.rightBarButtonItem =  newItemButton
+    }
+    
+    @IBAction func showNewItem(){
+        let newItemController = NewItemViewController(delegate: self)
+        
+        if let navigation =  navigationController{
+            navigation.pushViewController(newItemController, animated: true)
+        }
+    }
+    
+    func addNew(item: Item){
+        items.append(item)
+        
+        if(tableView ==  nil){
+            return
+        }
+        
+        tableView!.reloadData()
     }
     
     
