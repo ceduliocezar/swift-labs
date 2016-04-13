@@ -35,10 +35,7 @@ class MealsTableViewController: UITableViewController, AddMealDelegate {
     func addMeal(meal : Meal){
         meals.append(meal)
         
-        let dir = getUserDir()
-        
-        let archive = "\(dir)/eggplant-brownie-meals"
-        NSKeyedArchiver.archiveRootObject(meals, toFile: archive)
+        Dao().saveMeals(meals)
         tableView.reloadData()
     }
     
@@ -78,24 +75,6 @@ class MealsTableViewController: UITableViewController, AddMealDelegate {
     }
     
     override func viewDidLoad() {
-        
-        let dir = getUserDir()
-        
-        let archive = "\(dir)/eggplant-brownie-meals"
-        
-        if let loaded = NSKeyedUnarchiver.unarchiveObjectWithFile(archive){
-            self.meals = loaded as! Array
-        }
-        
+        self.meals = Dao().loadMeals()
     }
-    
-    func getUserDir()-> String{
-        let userDirs = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
-        
-        return userDirs[0]
-        
-
-    }
-
-
 }
