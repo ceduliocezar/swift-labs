@@ -5,8 +5,9 @@
 //  Created by Cedulio Cezar on 07/04/16.
 //  Copyright © 2016 Cedulio Cezar. All rights reserved.
 //
+import Foundation
 
-class Meal{
+class Meal : NSObject, NSCoding{
     
     let name : String
     let happiness : Int
@@ -15,6 +16,13 @@ class Meal{
     init(name:String , happiness:Int){
         self.name = name
         self.happiness = happiness
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        self.name = aDecoder.decodeObjectForKey("name") as! String
+        self.happiness = aDecoder.decodeIntegerForKey("happiness")
+        self.items = aDecoder.decodeObjectForKey("items") as! Array<Item>
+        
     }
     
     
@@ -35,6 +43,12 @@ class Meal{
         }
         
         return message
+    }
+    
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(self.name, forKey: "name")
+        aCoder.encodeInt(Int32(self.happiness), forKey: "happiness")
+        aCoder.encodeObject(self.items, forKey: "items")
     }
     
 }

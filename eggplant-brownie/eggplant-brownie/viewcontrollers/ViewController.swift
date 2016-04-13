@@ -21,12 +21,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     var delegate : AddMealDelegate?
     
-    var items = [ Item(name: "Eggplant Brownie", calories: 10),
-                  Item(name: "Zucchini Muffin", calories: 10),
-                  Item(name: "Cookie", calories: 10),
-                  Item(name: "Coconut oil", calories: 500),
-                  Item(name: "Chocolate frosting", calories: 1000),
-                  Item(name: "Chocolate chip", calories: 1000)]
+    var items = Array<Item>()
     
     var selected = Array<Item>()
     
@@ -130,6 +125,21 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                                             action: Selector("showNewItem"))
         
         navigationItem.rightBarButtonItem =  newItemButton
+        
+        let dir = getUserDir()
+        
+        let archive = "\(dir)/eggplant-brownie-items"
+        
+        if let loaded = NSKeyedUnarchiver.unarchiveObjectWithFile(archive){
+            items = loaded as! Array
+        }
+        
+    }
+    
+    func getUserDir() -> String{
+        let userDir = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
+        
+        return userDir[0] as String
     }
     
     @IBAction func showNewItem(){
@@ -145,14 +155,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func addNew(item: Item){
         items.append(item)
         
+        let dir = getUserDir()
+        let archive = "\(dir)/eggplant-brownie-items"
+        
+        NSKeyedArchiver.archiveRootObject(items, toFile: archive)
+        
         if let table =  tableView{
             table.reloadData()
         }else{
             Alert(controller: self).show("Unexpected error, but the item was added")
         }
     }
-    
-    
-
 }
-
