@@ -32,8 +32,29 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBAction func add(){
         
+        if let meal = getMealFromForm(){
+            
+            meal.items =  selected
+            
+            if let meals = delegate{
+                meals.addMeal(meal)
+                
+                if let navigation = self.navigationController {
+                    navigation.popViewControllerAnimated(true)
+                } else {
+                    Alert(controller: self).show("Unexpected error, but the meal was added.")
+                }
+                return
+            }
+        }
+        
+        Alert(controller: self).show()
+        
+    }
+    
+    func getMealFromForm() -> Meal?{
         if(nameField == nil || hapinessField == nil){
-            return
+            return nil
         }
         
         
@@ -41,22 +62,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let hapiness = Int(hapinessField!.text!)
         
         if hapiness == nil{
-            return
+            return nil
         }
         
         let meal = Meal(name: name! ,  happiness: hapiness!)
-        meal.items =  selected
-        
         
         print("eaten: \(meal.name) \(meal.happiness) \(meal.items)")
         
-        delegate!.addMeal(meal)
-        
-        
-        if let navigation = self.navigationController {
-            navigation.popViewControllerAnimated(true)
-        }
-        
+        return meal
         
     }
     
@@ -124,17 +137,19 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         if let navigation =  navigationController{
             navigation.pushViewController(newItemController, animated: true)
+        }else{
+            Alert(controller: self).show()
         }
     }
     
     func addNew(item: Item){
         items.append(item)
         
-        if(tableView ==  nil){
-            return
+        if let table =  tableView{
+            table.reloadData()
+        }else{
+            Alert(controller: self).show("Unexpected error, but the item was added")
         }
-        
-        tableView!.reloadData()
     }
     
     

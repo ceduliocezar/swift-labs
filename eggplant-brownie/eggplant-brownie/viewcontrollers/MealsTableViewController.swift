@@ -12,7 +12,6 @@ class MealsTableViewController: UITableViewController, AddMealDelegate {
     
     
     var meals = [ Meal(name: "Eggplant brownie", happiness: 5), Meal(name: "Zucchini Muffin", happiness: 3)]
-
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return meals.count
@@ -58,19 +57,20 @@ class MealsTableViewController: UITableViewController, AddMealDelegate {
                 return
             }
             
-            let row = indexPath?.row
+            let row = indexPath!.row
             
             
-            let meal =  meals[row!]
+            let meal =  meals[row]
             
-            let details = UIAlertController(title: meal.name, message: meal.showDetails(), preferredStyle: UIAlertControllerStyle.Alert)
+            RemoveMealController(controller: self).showMeal(meal, handler: { action in
+                self.meals.removeAtIndex(row)
+                self.tableView.reloadData()
+                
+            })
+
             
-            let ok = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel, handler: nil)
-            
-            details.addAction(ok)
-            
-            presentViewController(details, animated: true, completion: nil)
         }
     }
+
 
 }
