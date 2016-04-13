@@ -11,7 +11,7 @@ import UIKit
 class MealsTableViewController: UITableViewController, AddMealDelegate {
     
     
-    var meals = [ Meal(name: "Eggplant brownie", happiness: 5), Meal(name: "Zucchini Muffin", happiness: 3)]
+    var meals = Array<Meal>()
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return meals.count
@@ -34,6 +34,11 @@ class MealsTableViewController: UITableViewController, AddMealDelegate {
     
     func addMeal(meal : Meal){
         meals.append(meal)
+        
+        let dir = getUserDir()
+        
+        let archive = "\(dir)/eggplant-brownie-meals"
+        NSKeyedArchiver.archiveRootObject(meals, toFile: archive)
         tableView.reloadData()
     }
     
@@ -70,6 +75,26 @@ class MealsTableViewController: UITableViewController, AddMealDelegate {
 
             
         }
+    }
+    
+    override func viewDidLoad() {
+        
+        let dir = getUserDir()
+        
+        let archive = "\(dir)/eggplant-brownie-meals"
+        
+        if let loaded = NSKeyedUnarchiver.unarchiveObjectWithFile(archive){
+            self.meals = loaded as! Array
+        }
+        
+    }
+    
+    func getUserDir()-> String{
+        let userDirs = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
+        
+        return userDirs[0]
+        
+
     }
 
 
