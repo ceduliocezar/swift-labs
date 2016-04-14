@@ -126,13 +126,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         navigationItem.rightBarButtonItem =  newItemButton
         
-        let dir = getUserDir()
-        
-        let archive = "\(dir)/eggplant-brownie-items"
-        
-        if let loaded = NSKeyedUnarchiver.unarchiveObjectWithFile(archive){
-            items = loaded as! Array
-        }
+        self.items = Dao().loadItems()
         
     }
     
@@ -153,12 +147,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func addNew(item: Item){
-        items.append(item)
+        self.items.append(item)
         
-        let dir = getUserDir()
-        let archive = "\(dir)/eggplant-brownie-items"
-        
-        NSKeyedArchiver.archiveRootObject(items, toFile: archive)
+        Dao().saveItems(self.items)
         
         if let table =  tableView{
             table.reloadData()
