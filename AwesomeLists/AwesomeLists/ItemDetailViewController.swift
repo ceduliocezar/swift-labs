@@ -1,5 +1,5 @@
 //
-//  AddItemViewController.swift
+//  ItemDetailViewController.swift
 //  AwesomeLists
 //
 //  Created by Cedulio Cezar on 16/04/16.
@@ -9,22 +9,22 @@
 import Foundation
 import UIKit
 
-protocol AddItemDelegate: class{
-    func addItemViewControllerDidCancel(controller: AddItemViewController)
+protocol ItemDetailViewDelegate: class{
+    func addItemViewControllerDidCancel(controller: ItemDetailViewController)
     
-    func addItemViewController(controler: AddItemViewController, didFinishAddingItem item: ChecklistItem)
+    func itemDetailViewController(controler: ItemDetailViewController, didFinishAddingItem item: ChecklistItem)
     
-    func addItemViewController(controler: AddItemViewController, didFinishEditingItem item: ChecklistItem)
+    func itemDetailViewController(controler: ItemDetailViewController, didFinishEditingItem item: ChecklistItem)
 }
 
 
-class AddItemViewController: UITableViewController, UITextFieldDelegate{
+class ItemDetailViewController: UITableViewController, UITextFieldDelegate{
     
     @IBOutlet weak var textField: UITextField!
     
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
     
-    weak var delegate: AddItemDelegate?
+    weak var delegate: ItemDetailViewDelegate?
     
     var itemToEdit: ChecklistItem?
     
@@ -49,12 +49,12 @@ class AddItemViewController: UITableViewController, UITextFieldDelegate{
         
         if let item = itemToEdit{
             item.text = textField.text!
-            delegate?.addItemViewController(self, didFinishEditingItem: item)
+            delegate?.itemDetailViewController(self, didFinishEditingItem: item)
         }else{
             let item = ChecklistItem()
             item.text = textField.text!
             
-            delegate?.addItemViewController(self, didFinishAddingItem: item)
+            delegate?.itemDetailViewController(self, didFinishAddingItem: item)
         }
         
     }

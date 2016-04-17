@@ -60,7 +60,7 @@
         <!--Add Item-->
         <scene sceneID="a9g-63-XSK">
             <objects>
-                <tableViewController id="GOl-Ad-kUQ" customClass="AddItemViewController" customModule="AwesomeLists" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="GOl-Ad-kUQ" customClass="ItemDetailViewController" customModule="AwesomeLists" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="fSp-R9-BWq">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
