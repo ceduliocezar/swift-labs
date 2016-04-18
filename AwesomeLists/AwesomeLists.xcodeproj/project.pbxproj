@@ -14,6 +14,10 @@
 		18B21A851CC16ADB00672EFC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18B21A831CC16ADB00672EFC /* LaunchScreen.storyboard */; };
 		18B21A8D1CC286FD00672EFC /* ChecklistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B21A8C1CC286FD00672EFC /* ChecklistItem.swift */; };
 		18B21A8F1CC2ADBB00672EFC /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B21A8E1CC2ADBB00672EFC /* ItemDetailViewController.swift */; };
+		18B21A911CC3E57F00672EFC /* AllListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B21A901CC3E57F00672EFC /* AllListsViewController.swift */; };
+		18B21A931CC3EA0200672EFC /* Checklist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B21A921CC3EA0200672EFC /* Checklist.swift */; };
+		18B21A951CC5180D00672EFC /* ListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B21A941CC5180D00672EFC /* ListDetailViewController.swift */; };
+		18B21A971CC554F500672EFC /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B21A961CC554F500672EFC /* DataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,10 @@
 		18B21A861CC16ADB00672EFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18B21A8C1CC286FD00672EFC /* ChecklistItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChecklistItem.swift; sourceTree = "<group>"; };
 		18B21A8E1CC2ADBB00672EFC /* ItemDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
+		18B21A901CC3E57F00672EFC /* AllListsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllListsViewController.swift; sourceTree = "<group>"; };
+		18B21A921CC3EA0200672EFC /* Checklist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Checklist.swift; sourceTree = "<group>"; };
+		18B21A941CC5180D00672EFC /* ListDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListDetailViewController.swift; sourceTree = "<group>"; };
+		18B21A961CC554F500672EFC /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,12 +68,16 @@
 			children = (
 				18B21A7A1CC16ADB00672EFC /* AppDelegate.swift */,
 				18B21A7C1CC16ADB00672EFC /* ChecklistViewController.swift */,
+				18B21A901CC3E57F00672EFC /* AllListsViewController.swift */,
+				18B21A921CC3EA0200672EFC /* Checklist.swift */,
 				18B21A7E1CC16ADB00672EFC /* Main.storyboard */,
 				18B21A811CC16ADB00672EFC /* Assets.xcassets */,
 				18B21A831CC16ADB00672EFC /* LaunchScreen.storyboard */,
 				18B21A861CC16ADB00672EFC /* Info.plist */,
 				18B21A8C1CC286FD00672EFC /* ChecklistItem.swift */,
 				18B21A8E1CC2ADBB00672EFC /* ItemDetailViewController.swift */,
+				18B21A941CC5180D00672EFC /* ListDetailViewController.swift */,
+				18B21A961CC554F500672EFC /* DataModel.swift */,
 			);
 			path = AwesomeLists;
 			sourceTree = "<group>";
@@ -143,7 +155,11 @@
 			files = (
 				18B21A7D1CC16ADB00672EFC /* ChecklistViewController.swift in Sources */,
 				18B21A8F1CC2ADBB00672EFC /* ItemDetailViewController.swift in Sources */,
+				18B21A931CC3EA0200672EFC /* Checklist.swift in Sources */,
+				18B21A951CC5180D00672EFC /* ListDetailViewController.swift in Sources */,
 				18B21A8D1CC286FD00672EFC /* ChecklistItem.swift in Sources */,
+				18B21A971CC554F500672EFC /* DataModel.swift in Sources */,
+				18B21A911CC3E57F00672EFC /* AllListsViewController.swift in Sources */,
 				18B21A7B1CC16ADB00672EFC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
