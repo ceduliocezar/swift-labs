@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-class AllListsViewController: UITableViewController, ListDetailViewDelegate {
+class AllListsViewController: UITableViewController, ListDetailViewDelegate, UINavigationControllerDelegate {
     
     var dataModel: DataModel!
     
@@ -55,6 +55,10 @@ class AllListsViewController: UITableViewController, ListDetailViewDelegate {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        dataModel.indexOfSelectedChecklist =  indexPath.row
+        
+        
         let checklist =  dataModel.lists[indexPath.row]
         
         performSegueWithIdentifier("ShowChecklist", sender: checklist)
@@ -132,6 +136,31 @@ class AllListsViewController: UITableViewController, ListDetailViewDelegate {
         controller.checklistToEdit =  checklist
         
         presentViewController(navigationController, animated: true, completion: nil)
+    }
+    
+    func navigationController(navigationController: UINavigationController, willShowViewController viewController: UIViewController, animated: Bool) {
+        
+        if viewController ===  self {
+            NSUserDefaults.standardUserDefaults().setInteger(-1, forKey: "ChecklistIndex")
+        }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        navigationController?.delegate = self
+        
+        let index = dataModel.indexOfSelectedChecklist
+        
+        
+        if index >= 0  &&  index < dataModel.lists.count {
+            
+            let checklist = dataModel.lists[index]
+                
+            performSegueWithIdentifier("ShowChecklist", sender: checklist)
+            
+        }
+        
     }
 
 }
