@@ -19,6 +19,14 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func buttonTapped(sender: UIButton) {
+        if sender.titleForState(.Normal) == "X" {
+            sender.setTitle("A very long title for this button", forState: .Normal)
+        } else {
+            sender.setTitle("X", forState: .Normal)
+        }
+    }
 
 
 }

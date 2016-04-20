@@ -17,38 +17,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Syz-sL-1bL">
-                                <rect key="frame" x="189" y="42" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zrh-Oe-GxN">
-                                <rect key="frame" x="111" y="518" width="99" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zrh-Oe-GxN">
+                                <rect key="frame" x="121" y="518" width="80" height="30"/>
                                 <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="A Longer label">
                                     <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ocf-nD-749"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="phh-lM-IJe">
-                                <rect key="frame" x="57" y="518" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JCa-OZ-v9Q">
-                                <rect key="frame" x="111" y="448" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JCa-OZ-v9Q">
+                                <rect key="frame" x="121" y="448" width="80" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="eBd-7A-cwh"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fW7-jc-8iO"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="zrh-Oe-GxN" firstAttribute="width" secondItem="JCa-OZ-v9Q" secondAttribute="width" id="1Co-us-KGL"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="zrh-Oe-GxN" secondAttribute="bottom" constant="20" id="26P-Li-95N"/>
-                            <constraint firstItem="zrh-Oe-GxN" firstAttribute="leading" secondItem="phh-lM-IJe" secondAttribute="trailing" constant="8" id="JtX-8Z-pIy"/>
+                            <constraint firstItem="zrh-Oe-GxN" firstAttribute="trailing" secondItem="JCa-OZ-v9Q" secondAttribute="trailing" id="CRy-OG-ORn"/>
                             <constraint firstItem="zrh-Oe-GxN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Wbn-yV-Pos"/>
-                            <constraint firstAttribute="trailing" secondItem="Syz-sL-1bL" secondAttribute="trailing" constant="85" id="Wou-P2-0b6"/>
                             <constraint firstItem="zrh-Oe-GxN" firstAttribute="top" secondItem="JCa-OZ-v9Q" secondAttribute="bottom" constant="40" id="Y2T-yt-R8h"/>
-                            <constraint firstItem="Syz-sL-1bL" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="22" id="eay-GX-KGF"/>
-                            <constraint firstItem="JCa-OZ-v9Q" firstAttribute="leading" secondItem="zrh-Oe-GxN" secondAttribute="leading" id="hFE-fO-vZc"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="phh-lM-IJe" secondAttribute="bottom" constant="20" id="mjQ-Bn-0Bf"/>
+                            <constraint firstItem="zrh-Oe-GxN" firstAttribute="centerX" secondItem="JCa-OZ-v9Q" secondAttribute="centerX" id="an4-4j-mVf"/>
                         </constraints>
                     </view>
                 </viewController>
