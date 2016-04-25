@@ -1,0 +1,6 @@
+.DS_Store
+Build
+Source/Application.h
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata
