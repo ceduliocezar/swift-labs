@@ -19,6 +19,31 @@ class FlickrPhotosViewController: UICollectionViewController {
     private var searches = [FlickrSearchResults]()
     private let flickr = Flickr()
     
+    private var selectedPhotos = [FlickrPhoto]()
+    private let shareTextLabel = UILabel()
+    let themeColor = UIColor(red: 0.01, green: 0.41, blue: 0.22, alpha: 1.0)
+    
+    var sharing : Bool = false {
+        didSet {
+            collectionView?.allowsMultipleSelection = sharing
+            collectionView?.selectItemAtIndexPath(nil, animated: true, scrollPosition: .None)
+            selectedPhotos.removeAll(keepCapacity: false)
+            if sharing && largePhotoIndexPath != nil {
+                largePhotoIndexPath = nil
+            }
+            
+            let shareButton =
+                self.navigationItem.rightBarButtonItems!.first as UIBarButtonItem!
+            if sharing {
+                updateSharedPhotoCount()
+                let sharingDetailItem = UIBarButtonItem(customView: shareTextLabel)
+                navigationItem.setRightBarButtonItems([shareButton,sharingDetailItem], animated: true)
+            }
+            else {
+                navigationItem.setRightBarButtonItems([shareButton], animated: true)
+            }
+        }
+    }
     
     //1
     var largePhotoIndexPath : NSIndexPath? {
@@ -47,9 +72,71 @@ class FlickrPhotosViewController: UICollectionViewController {
             }
         }
     }
+
+    
+    @IBAction func share(sender: AnyObject) {
+        if searches.isEmpty {
+            return
+        }
+        
+        if !selectedPhotos.isEmpty {
+            var imageArray = [UIImage]()
+            for photo in self.selectedPhotos {
+                imageArray.append(photo.thumbnail!);
+            }
+            
+            let shareScreen = UIActivityViewController(activityItems: imageArray, applicationActivities: nil)
+            let popover = UIPopoverController(contentViewController: shareScreen)
+            popover.presentPopoverFromBarButtonItem(self.navigationItem.rightBarButtonItems!.first as UIBarButtonItem!,
+                                                    permittedArrowDirections: UIPopoverArrowDirection.Any, animated: true)
+        }
+        
+        sharing = !sharing
+    }
+    
+    func updateSharedPhotoCount() {
+        shareTextLabel.textColor = themeColor
+        shareTextLabel.text = "\(selectedPhotos.count) photos selected"
+        shareTextLabel.sizeToFit()
+    }
+    
+    override func collectionView(collectionView: UICollectionView,
+                                 didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        if sharing {
+            let photo = photoForIndexPath(indexPath)
+            selectedPhotos.append(photo)
+            updateSharedPhotoCount()
+        }
+    }
+    
+    override func collectionView(collectionView: UICollectionView!,
+                                 didDeselectItemAtIndexPath indexPath: NSIndexPath) {
+        if sharing {
+            if let foundIndex = find(photoForIndexPath(indexPath)) {
+                selectedPhotos.removeAtIndex(foundIndex)
+                updateSharedPhotoCount()
+            }
+        }
+    }
+    
+    func find(photo: FlickrPhoto) -> Int? {
+        
+        for selected in selectedPhotos{
+            if selected.photoID == photo.photoID{
+                return selectedPhotos.indexOf(selected)
+            }
+        }
+        
+        return nil
+    }
     
     override func collectionView(collectionView: UICollectionView,
                                  shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+        
+        if sharing {
+            return true
+        }
+        
         if largePhotoIndexPath == indexPath {
             largePhotoIndexPath = nil
         }

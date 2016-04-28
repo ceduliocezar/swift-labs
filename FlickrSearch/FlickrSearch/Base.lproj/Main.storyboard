@@ -84,6 +84,11 @@
                                 <outlet property="delegate" destination="Zqa-fC-CfG" id="CG1-l0-791"/>
                             </connections>
                         </textField>
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="wqV-FS-QGT">
+                            <connections>
+                                <action selector="share:" destination="Zqa-fC-CfG" id="KRW-BB-8Js"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iMl-kd-wGR" userLabel="First Responder" sceneMemberID="firstResponder"/>
