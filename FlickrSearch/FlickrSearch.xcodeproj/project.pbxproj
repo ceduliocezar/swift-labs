@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		180BB7601CD274B2004CFB4E /* FlickrPhotoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180BB75F1CD274B2004CFB4E /* FlickrPhotoHeaderView.swift */; };
 		18647CF51CD1333D0020D13F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18647CF41CD1333D0020D13F /* AppDelegate.swift */; };
 		18647CFA1CD1333D0020D13F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18647CF81CD1333D0020D13F /* Main.storyboard */; };
 		18647CFC1CD1333D0020D13F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18647CFB1CD1333D0020D13F /* Assets.xcassets */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		180BB75F1CD274B2004CFB4E /* FlickrPhotoHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrPhotoHeaderView.swift; sourceTree = "<group>"; };
 		18647CF11CD1333D0020D13F /* FlickrSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlickrSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18647CF41CD1333D0020D13F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18647CF91CD1333D0020D13F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				18647D001CD1333D0020D13F /* Info.plist */,
 				18647D061CD134F40020D13F /* FlickrPhotosViewController.swift */,
 				18647D0A1CD248940020D13F /* FlickrPhotoCell.swift */,
+				180BB75F1CD274B2004CFB4E /* FlickrPhotoHeaderView.swift */,
 			);
 			path = FlickrSearch;
 			sourceTree = "<group>";
@@ -143,6 +146,7 @@
 			files = (
 				18647D091CD1361A0020D13F /* FlickrSearcher.swift in Sources */,
 				18647CF51CD1333D0020D13F /* AppDelegate.swift in Sources */,
+				180BB7601CD274B2004CFB4E /* FlickrPhotoHeaderView.swift in Sources */,
 				18647D0B1CD248940020D13F /* FlickrPhotoCell.swift in Sources */,
 				18647D071CD134F40020D13F /* FlickrPhotosViewController.swift in Sources */,
 			);
@@ -294,6 +298,7 @@
 				18647D051CD1333D0020D13F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
