@@ -18,7 +18,12 @@ class ViewController: UIViewController, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        tableView.estimatedRowHeight = 100
+        tableView.rowHeight = UITableViewAutomaticDimension
+        createFakeItems()
+    }
+    
+    func createFakeItems(){
         for index in 0..<100 {
             if index % 2 == 1{
                 items.append(createImageItem(index))
@@ -75,55 +80,80 @@ class ViewController: UIViewController, UITableViewDataSource {
         
         let item = items[indexPath.section]
         
-        if (item.imageURL) != nil{
-            
-            let cell = tableView.dequeueReusableCellWithIdentifier("imageCell")
-            return cell!
-            
+        if hasImageURL(item) {
+            return createImageCell(tableView, indexPath: indexPath)
         }else{
-            if indexPath.row == 0 {
-                let cell = tableView.dequeueReusableCellWithIdentifier("headerCell")
+            return createTableCell(tableView, indexPath: indexPath, item: item)
+        }
+    }
+    
+    func createTableCell(tableView: UITableView, indexPath: NSIndexPath, item: Item) -> UITableViewCell{
+        
+        if isHeaderCell(indexPath) {
+            return createTableHeader(tableView, indexPath: indexPath, item: item)
+        }else{
+            return createTableLine(tableView, indexPath: indexPath, item: item)
+        }
+    }
+    
+    func hasImageURL(item: Item) -> Bool{
+        return (item.imageURL) != nil
+    }
+    
+    func isHeaderCell(indexPath: NSIndexPath) -> Bool{
+        return indexPath.row == 0
+    }
+    
+    
+    func createTableLine(tableView: UITableView, indexPath: NSIndexPath, item: Item) -> UITableViewCell{
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell")
+        let stackHorizontal = cell!.viewWithTag(2) as! UIStackView
+        stackHorizontal.subviews.forEach({ $0.removeFromSuperview() })
+        
+        
+        for column in 0..<item.lines![indexPath.row].count{
+            let label = UILabel()
+            
+            if column == 0 {
+                label.textAlignment = .Left
+                label.text = "\(item.lines![indexPath.row][column])\(indexPath.section)"
                 
-                let stackHorizontal = cell?.viewWithTag(1) as! UIStackView
-                stackHorizontal.subviews.forEach({ $0.removeFromSuperview() })
-                for index in 0..<item.columns!.count{
-                    let label = UILabel()
-                    label.font = UIFont.boldSystemFontOfSize(18.0)
-                    if index == 0 {
-                        label.textAlignment = .Left
-                    }else{
-                        label.textAlignment = .Center
-                    }
-                    
-                    label.text = item.columns![index]
-                    stackHorizontal.addArrangedSubview(label)
-                }
-                return cell!
             }else{
-                let cell = tableView.dequeueReusableCellWithIdentifier("cell")
-                let stackHorizontal = cell!.viewWithTag(2) as! UIStackView
-                stackHorizontal.subviews.forEach({ $0.removeFromSuperview() })
-                
-                        
-                for column in 0..<item.lines![indexPath.row].count{
-                    let label = UILabel()
-                    
-                    if column == 0 {
-                        label.textAlignment = .Left
-                        label.text = "\(item.lines![indexPath.row][column])\(indexPath.section)"
-
-                    }else{
-                        label.textAlignment = .Center
-                        label.text = "\(indexPath.section)\(indexPath.row)"
-                    }
-                    
-                    stackHorizontal.addArrangedSubview(label)
-                }
-
-                return cell!
+                label.textAlignment = .Center
+                label.text = "\(indexPath.section)\(indexPath.row)"
             }
             
+            stackHorizontal.addArrangedSubview(label)
         }
+        
+        return cell!
+    }
+    
+    func createTableHeader(tableView: UITableView, indexPath: NSIndexPath, item: Item) -> UITableViewCell{
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("headerCell")
+        
+        let stackHorizontal = cell?.viewWithTag(1) as! UIStackView
+        stackHorizontal.subviews.forEach({ $0.removeFromSuperview() })
+        for index in 0..<item.columns!.count{
+            let label = UILabel()
+            label.font = UIFont.boldSystemFontOfSize(18.0)
+            if index == 0 {
+                label.textAlignment = .Left
+            }else{
+                label.textAlignment = .Center
+            }
+            
+            label.text = item.columns![index]
+            
+            stackHorizontal.addArrangedSubview(label)
+        }
+        return cell!
+    }
+    
+    func createImageCell(tableView: UITableView, indexPath: NSIndexPath) -> UITableViewCell{
+        let cell = tableView.dequeueReusableCellWithIdentifier("imageCell")
+        return cell!
     }
 
 }
