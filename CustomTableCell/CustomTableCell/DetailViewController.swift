@@ -23,6 +23,9 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         items.append(Detail(name: "dec"))
         items.append(Detail(name: "fie"))
         
+        tableView.estimatedRowHeight = 44.0
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
     }
     
     
@@ -31,8 +34,8 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         let cell = tableView.dequeueReusableCellWithIdentifier("ImageCell", forIndexPath: indexPath)
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         
-        let imageView = tableView.viewWithTag(1001) as! UIImageView
-        imageView.image = items[indexPath.row].image
+        //let imageView = tableView.viewWithTag(1001) as! UIImageView
+        //imageView.image = items[indexPath.row].image
         return cell
     }
     
