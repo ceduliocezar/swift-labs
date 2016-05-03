@@ -44,9 +44,16 @@ class ViewController: UIViewController, UITableViewDataSource {
             item.columns = Array<String>()
             
             for columnIndex in 0..<numberOfColumns{
-                line.append("Cell \(columnIndex)")
-                item.columns!.append("Cell \(columnIndex)")
+                line.append("AES \(columnIndex)")
+//                item.columns!.append("Cell \(columnIndex)")
             }
+            
+            item.columns!.append("")
+            item.columns!.append("Ch")
+            item.columns!.append("Tr")
+            item.columns!.append("Cli")
+            item.columns!.append("Total")
+            item.columns!.append("T.Médio")
             
             item.lines!.append(line)
             
