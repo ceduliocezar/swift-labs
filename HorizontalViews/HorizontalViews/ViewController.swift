@@ -16,85 +16,59 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                print(myView.frame.size.width)
-        desenhar()
-
-
-    }
-    @IBAction func click(sender: AnyObject) {
-        print(myView.frame.width)
-        desenhar()
-        
+        draw()
+        //NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.rotated), name: UIDeviceOrientationDidChangeNotification, object: nil)
     }
     
-    func desenhar(){
+    @IBAction func click(sender: AnyObject) {
+        draw()
+    }
+    
+    func rotated(){
+        draw()
+    }
+    
+    func draw(){
+        print(myView.frame.size.width)
         
+        removeAllSubViews(myView)
         
-        
-        //        let label = UILabel()
-        //        label.text = "LABEL"
-        //        label.backgroundColor =  getRandomColor()
-        //
-        //
-        //
-        //        myView.addSubview(label)
-        //
-        //        label.leadingAnchor.constraintEqualToAnchor(myView.leadingAnchor).active = true
-        //        label.topAnchor.constraintEqualToAnchor(myView.topAnchor).active = true
-        //        label.bottomAnchor.constraintEqualToAnchor(myView.bottomAnchor).active = true
-        //        label.translatesAutoresizingMaskIntoConstraints = false
-        //        label.frame = CGRectMake(0, 0, myView.frame.width, myView.frame.height)
-        //        label.layoutIfNeeded()
-        //
-        //
-        //        let label2 = UILabel()
-        //        label2.text = "LABEL2"
-        //        label2.backgroundColor =  getRandomColor()
-        //
-        //
-        //
-        //        myView.addSubview(label2)
-        //
-        //        label2.leadingAnchor.constraintEqualToAnchor(label.trailingAnchor).active = true
-        //        label2.trailingAnchor.constraintEqualToAnchor(myView.trailingAnchor).active = true
-        //        label2.topAnchor.constraintEqualToAnchor(myView.topAnchor).active = true
-        //        label2.bottomAnchor.constraintEqualToAnchor(myView.bottomAnchor).active = true
-        //        label2.translatesAutoresizingMaskIntoConstraints = false
-        
-        
-        
-        //        imageView.frame = CGrectMake(x,y imageView.frame.width*0.2,50);
-        
-        myView.subviews.forEach({ $0.removeFromSuperview() })
-        
-        let totalWidth = myView.frame.width
         let totalHeight =  myView.frame.height
-        
-        let labelWidth = totalWidth/CGFloat(numberOfColumns)
+        let labelWidth = calculateLabelWidth(numberOfColumns, viewContainer: myView)
         
         for index in 0..<numberOfColumns {
-            
-            let rect = CGRect(x: CGFloat(labelWidth*CGFloat(index)), y: 0, width: labelWidth, height: totalHeight)
-            
-            let label = UILabel(frame: rect)
-            label.text = "LABEL \(index)"
-            label.backgroundColor = getRandomColor()
-            
+            let label = createLabel(labelWidth, index: index, totalHeight: totalHeight)
             myView.addSubview(label)
-            
-            //            if myView.subviews.count == 1 {
-            //                label.leadingAnchor.constraintEqualToAnchor(myView.leadingAnchor).active = true
-            //            }else{
-            //                label.leadingAnchor.constraintEqualToAnchor(myView.subviews[index-1].trailingAnchor).active = true
-            //            }
-            //
-            //            label.topAnchor.constraintEqualToAnchor(myView.topAnchor).active = true
-            //            label.bottomAnchor.constraintEqualToAnchor(myView.bottomAnchor).active = true
-            //            label.translatesAutoresizingMaskIntoConstraints = false
-            
         }
         
         myView.layoutIfNeeded()
+    }
+    
+    func createLabel(labelWidth: CGFloat, index: Int, totalHeight: CGFloat) -> UILabel{
+        
+        let distanceFromX = calculateDistanceFromX(labelWidth, index: index)
+        
+        let rect = CGRect(x: distanceFromX, y: 0, width: labelWidth, height: totalHeight)
+        
+        let label = UILabel(frame: rect)
+        label.textAlignment = .Center
+        
+        label.text = "LABEL \(index)"
+        label.backgroundColor = getRandomColor()
+        
+        return label
+    }
+    
+    func calculateDistanceFromX(width: CGFloat, index: Int) -> CGFloat{
+        return CGFloat(width * CGFloat(index))
+    }
+    
+    func calculateLabelWidth(numberOfColumns: Int, viewContainer: UIView) -> CGFloat{
+        return viewContainer.frame.width / CGFloat(numberOfColumns)
+    }
+    
+    func removeAllSubViews(view: UIView){
+        view.subviews.forEach({ $0.removeFromSuperview() })
     }
     
     func getRandomColor() -> UIColor{
