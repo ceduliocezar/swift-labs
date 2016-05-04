@@ -18,6 +18,9 @@ class ViewController: UIViewController, UITableViewDataSource {
     
     let screenSize: CGRect = UIScreen.mainScreen().bounds
     
+    // fixo, porque sem constraints nao foi possível descobrir o tamanho da linha de uma maneira consistente
+    let tableLineHeight = CGFloat(44)
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,10 +28,6 @@ class ViewController: UIViewController, UITableViewDataSource {
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
         createFakeItems()
-    }
-    
-    override func viewDidLayoutSubviews() {
-        tableView.reloadData()
     }
     
     func createFakeItems(){
@@ -143,11 +142,10 @@ class ViewController: UIViewController, UITableViewDataSource {
     
     func drawLine(myView: UIView, line: Array<String>){
         
-        let totalHeight =  CGFloat(44)
         let labelWidth = calculateLabelWidth(numberOfColumns)
         
         for index in 0..<line.count {
-            let label = createLabel(labelWidth, index: index, totalHeight: totalHeight)
+            let label = createLabel(labelWidth, index: index, height: tableLineHeight)
             label.text = line[index]
             myView.addSubview(label)
         }
@@ -155,13 +153,13 @@ class ViewController: UIViewController, UITableViewDataSource {
         myView.layoutIfNeeded()
     }
     
-    func createLabel(labelWidth: CGFloat, index: Int, totalHeight: CGFloat) -> UILabel{
+    func createLabel(labelWidth: CGFloat, index: Int, height: CGFloat) -> UILabel{
         
         let distanceFromX = calculateDistanceFromX(labelWidth, index: index)
         
-        print("x=\(distanceFromX), labelWidth=\(labelWidth), totalHeight=\(totalHeight)")
+        print("x=\(distanceFromX), labelWidth=\(labelWidth), totalHeight=\(height)")
         
-        let rect = CGRect(x: distanceFromX, y: 0, width: labelWidth, height: totalHeight)
+        let rect = CGRect(x: distanceFromX, y: 0, width: labelWidth, height: height)
         
         let label = UILabel(frame: rect)
         label.textAlignment = .Center
