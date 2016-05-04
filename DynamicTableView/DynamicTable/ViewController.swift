@@ -16,24 +16,32 @@ class ViewController: UIViewController, UITableViewDataSource {
 
     var items = [Item]()
     
+    let screenSize: CGRect = UIScreen.mainScreen().bounds
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
         createFakeItems()
     }
     
+    override func viewDidLayoutSubviews() {
+        tableView.reloadData()
+    }
+    
     func createFakeItems(){
         for index in 0..<100 {
             if index % 2 == 1{
-                items.append(createImageItem(index))
+                items.append(createFakeImageItem(index))
             }else{
-                items.append(createTableItem(index))
+                items.append(createFakeTableItem(index))
             }
         }
     }
     
-    func createTableItem(row: Int) -> Item{
+    func createFakeTableItem(row: Int) -> Item{
         let item = Item()
         item.name = "Name \(row)"
         item.lines = Array<Array<String>>()
@@ -45,15 +53,8 @@ class ViewController: UIViewController, UITableViewDataSource {
             
             for columnIndex in 0..<numberOfColumns{
                 line.append("AES \(columnIndex)")
-//                item.columns!.append("Cell \(columnIndex)")
+                item.columns!.append("Cell \(columnIndex)")
             }
-            
-            item.columns!.append("")
-            item.columns!.append("Ch")
-            item.columns!.append("Tr")
-            item.columns!.append("Cli")
-            item.columns!.append("Total")
-            item.columns!.append("T.Médio")
             
             item.lines!.append(line)
             
@@ -62,7 +63,7 @@ class ViewController: UIViewController, UITableViewDataSource {
         
     }
     
-    func createImageItem(row: Int) -> Item{
+    func createFakeImageItem(row: Int) -> Item{
         let item =  Item()
         item.name = "Name \(row)"
         item.imageURL = "\(row)"
@@ -114,25 +115,9 @@ class ViewController: UIViewController, UITableViewDataSource {
     
     func createTableLine(tableView: UITableView, indexPath: NSIndexPath, item: Item) -> UITableViewCell{
         let cell = tableView.dequeueReusableCellWithIdentifier("cell")
-        let stackHorizontal = cell!.viewWithTag(2) as! UIStackView
+        let view = cell!.viewWithTag(2)!
         
-        stackHorizontal.subviews.forEach({ $0.removeFromSuperview() })
-        
-        
-        for column in 0..<item.lines![indexPath.row].count{
-            let label = UILabel()
-            
-            if column == 0 {
-                label.textAlignment = .Left
-                label.text = "\(item.lines![indexPath.row][column])\(indexPath.section)"
-                
-            }else{
-                label.textAlignment = .Center
-                label.text = "\(indexPath.section)\(indexPath.row)"
-            }
-            
-            stackHorizontal.addArrangedSubview(label)
-        }
+        drawLine(view, line: item.lines![indexPath.row])
         
         return cell!
     }
@@ -141,27 +126,72 @@ class ViewController: UIViewController, UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("headerCell")
         
-        let stackHorizontal = cell?.viewWithTag(1) as! UIStackView
-        stackHorizontal.subviews.forEach({ $0.removeFromSuperview() })
-        for index in 0..<item.columns!.count{
-            let label = UILabel()
-            label.font = UIFont.boldSystemFontOfSize(18.0)
-            if index == 0 {
-                label.textAlignment = .Left
-            }else{
-                label.textAlignment = .Center
-            }
-            
-            label.text = item.columns![index]
-            
-            stackHorizontal.addArrangedSubview(label)
-        }
+        let headerView = cell!.viewWithTag(1)!
+        
+        removeAllSubViews(headerView)
+        
+        drawLine(headerView, line: item.columns!)
+    
         return cell!
     }
     
     func createImageCell(tableView: UITableView, indexPath: NSIndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCellWithIdentifier("imageCell")
         return cell!
+    }
+    
+    
+    func drawLine(myView: UIView, line: Array<String>){
+        
+        let totalHeight =  CGFloat(44)
+        let labelWidth = calculateLabelWidth(numberOfColumns)
+        
+        for index in 0..<line.count {
+            let label = createLabel(labelWidth, index: index, totalHeight: totalHeight)
+            label.text = line[index]
+            myView.addSubview(label)
+        }
+        
+        myView.layoutIfNeeded()
+    }
+    
+    func createLabel(labelWidth: CGFloat, index: Int, totalHeight: CGFloat) -> UILabel{
+        
+        let distanceFromX = calculateDistanceFromX(labelWidth, index: index)
+        
+        print("x=\(distanceFromX), labelWidth=\(labelWidth), totalHeight=\(totalHeight)")
+        
+        let rect = CGRect(x: distanceFromX, y: 0, width: labelWidth, height: totalHeight)
+        
+        let label = UILabel(frame: rect)
+        label.textAlignment = .Center
+        //label.backgroundColor = getRandomColor()
+        
+        return label
+    }
+    
+    func calculateDistanceFromX(width: CGFloat, index: Int) -> CGFloat{
+        return CGFloat(width * CGFloat(index))
+    }
+    
+    func calculateLabelWidth(numberOfColumns: Int) -> CGFloat{
+        return tableView.bounds.size.width / CGFloat(numberOfColumns)
+    }
+    
+    func removeAllSubViews(view: UIView){
+        view.subviews.forEach({ $0.removeFromSuperview() })
+    }
+    
+    func getRandomColor() -> UIColor {
+        
+        var randomRed:CGFloat = CGFloat(drand48())
+        
+        var randomGreen:CGFloat = CGFloat(drand48())
+        
+        var randomBlue:CGFloat = CGFloat(drand48())
+       
+        return UIColor(red: randomRed, green: randomGreen, blue: randomBlue, alpha: 1.0)
+        
     }
 
 }

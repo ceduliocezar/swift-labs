@@ -34,8 +34,8 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         let cell = tableView.dequeueReusableCellWithIdentifier("ImageCell", forIndexPath: indexPath)
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         
-        //let imageView = tableView.viewWithTag(1001) as! UIImageView
-        //imageView.image = items[indexPath.row].image
+        let imageView = cell.viewWithTag(1001) as! UIImageView
+        imageView.image = items[indexPath.row].image
         return cell
     }
     
