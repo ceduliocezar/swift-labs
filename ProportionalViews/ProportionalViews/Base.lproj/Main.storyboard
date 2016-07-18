@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ProportionalViews" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QIJ-7U-5Ej" userLabel="container">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="themartian" translatesAutoresizingMaskIntoConstraints="NO" id="0y4-pc-cN3" userLabel="image1">
+                                        <rect key="frame" x="0.0" y="0.0" width="180" height="600"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="therevenant" translatesAutoresizingMaskIntoConstraints="NO" id="cfi-gs-hlg" userLabel="image2">
+                                        <rect key="frame" x="180" y="0.0" width="420" height="600"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.28235294119999998" green="0.46666666670000001" blue="0.56078431370000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="0y4-pc-cN3" secondAttribute="bottom" id="3Ac-Po-oVC"/>
+                                    <constraint firstItem="0y4-pc-cN3" firstAttribute="top" secondItem="QIJ-7U-5Ej" secondAttribute="top" id="DDb-Nw-ICR"/>
+                                    <constraint firstItem="0y4-pc-cN3" firstAttribute="leading" secondItem="QIJ-7U-5Ej" secondAttribute="leading" id="E5k-uJ-obB"/>
+                                    <constraint firstAttribute="trailing" secondItem="cfi-gs-hlg" secondAttribute="trailing" id="YWS-FL-MJD"/>
+                                    <constraint firstItem="cfi-gs-hlg" firstAttribute="top" secondItem="QIJ-7U-5Ej" secondAttribute="top" id="cOl-wy-kBF"/>
+                                    <constraint firstItem="0y4-pc-cN3" firstAttribute="width" secondItem="QIJ-7U-5Ej" secondAttribute="width" multiplier="0.3" id="myx-Jw-w38"/>
+                                    <constraint firstItem="cfi-gs-hlg" firstAttribute="width" secondItem="QIJ-7U-5Ej" secondAttribute="width" multiplier="0.7" id="nOF-Vh-ljD"/>
+                                    <constraint firstAttribute="bottom" secondItem="cfi-gs-hlg" secondAttribute="bottom" id="sQO-6h-WZd"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="QIJ-7U-5Ej" secondAttribute="trailing" id="0fI-v1-HxU"/>
+                            <constraint firstItem="QIJ-7U-5Ej" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="8Wa-G2-5Sq"/>
+                            <constraint firstItem="QIJ-7U-5Ej" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="lgb-If-zI3"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="QIJ-7U-5Ej" secondAttribute="bottom" id="qh6-Du-pon"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="Kap-DB-dFp" id="KS8-Ki-cSj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="Kap-DB-dFp">
+                    <connections>
+                        <outlet property="delegate" destination="BYZ-38-t0r" id="1bt-3i-q1r"/>
+                        <outlet property="searchContentsController" destination="BYZ-38-t0r" id="Mgp-oS-NvE"/>
+                        <outlet property="searchResultsDataSource" destination="BYZ-38-t0r" id="gvd-VL-tbQ"/>
+                        <outlet property="searchResultsDelegate" destination="BYZ-38-t0r" id="61U-YL-giB"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="305" y="418"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="themartian" width="640" height="960"/>
+        <image name="therevenant" width="640" height="960"/>
+    </resources>
+</document>

@@ -43,6 +43,13 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
     
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath)-> UICollectionReusableView{
         
+        switch kind {
+        case UICollectionElementKindSectionHeader:
+            <#code#>
+        default:
+            <#code#>
+        }
+        
         let header = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "header", forIndexPath: indexPath)
         
         return header
