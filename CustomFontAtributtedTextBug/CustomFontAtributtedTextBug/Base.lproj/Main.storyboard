@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="6sa-jB-phE">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="SourceSansPro-Bold.ttf">
+            <string>SourceSansPro-Bold</string>
+        </mutableArray>
+    </customFonts>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CustomFontAtributtedTextBug" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Via Interface Builder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yzu-Us-XK9">
+                                <rect key="frame" x="223" y="74" width="155" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mR5-Dg-a07">
+                                <rect key="frame" x="40" y="118" width="520" height="126"/>
+                                <string key="text">THIS WORKS - FOR PLAIN TEXT Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip </string>
+                                <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="20"/>
+                                <color key="textColor" red="0.56862745100000001" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Programatically" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KsP-Yo-V8f">
+                                <rect key="frame" x="241" y="423" width="119" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VTN-xE-xYX">
+                                <rect key="frame" x="40" y="252" width="520" height="151"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="THIS NOT WORKS - FOR ATRIBUTTED TEXT MIXING ">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="20" name="SourceSansPro-Bold"/>
+                                            <font key="NSOriginalFont" size="20" name="SourceSansPro-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="LIGHT">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="20" name="SourceSansPro-Light"/>
+                                            <font key="NSOriginalFont" size="20" name="SourceSansPro-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=", ">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="20" name="SourceSansPro-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="REGULAR">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="20" name="SourceSansPro-Regular"/>
+                                            <font key="NSOriginalFont" size="20" name="SourceSansPro-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" AND BOLD">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="20" name="SourceSansPro-Bold"/>
+                                            <font key="NSOriginalFont" size="20" name="SourceSansPro-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" ">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="20" name="SourceSansPro-Regular"/>
+                                            <font key="NSOriginalFont" size="20" name="SourceSansPro-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="20" name="SourceSansPro-Light"/>
+                                            <font key="NSOriginalFont" size="20" name="SourceSansPro-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip </string>
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="20" name="SourceSansPro-Regular"/>
+                                            <font key="NSOriginalFont" size="20" name="SourceSansPro-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TEXT DEFINED PROGRAMATICALLY AT RU TIME" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0wM-S0-KTM">
+                                <rect key="frame" x="40" y="476" width="520" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="VTN-xE-xYX" secondAttribute="trailing" constant="20" id="3hW-5K-YOv"/>
+                            <constraint firstItem="0wM-S0-KTM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="5GR-fZ-ZnQ"/>
+                            <constraint firstItem="VTN-xE-xYX" firstAttribute="top" secondItem="mR5-Dg-a07" secondAttribute="bottom" constant="8" id="6HR-2a-0pj"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0wM-S0-KTM" secondAttribute="trailing" constant="20" id="BsZ-og-pGb"/>
+                            <constraint firstItem="VTN-xE-xYX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="CIh-6c-WfJ"/>
+                            <constraint firstItem="mR5-Dg-a07" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Cxi-8C-nZE"/>
+                            <constraint firstItem="KsP-Yo-V8f" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="D7t-cv-TY0"/>
+                            <constraint firstItem="mR5-Dg-a07" firstAttribute="top" secondItem="Yzu-Us-XK9" secondAttribute="bottom" constant="23" id="R7G-dx-DsO"/>
+                            <constraint firstItem="0wM-S0-KTM" firstAttribute="top" secondItem="KsP-Yo-V8f" secondAttribute="bottom" constant="32" id="SNx-XM-7sX"/>
+                            <constraint firstItem="Yzu-Us-XK9" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="Vkj-HT-yEs"/>
+                            <constraint firstItem="VTN-xE-xYX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="cdY-PL-EtX"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" relation="greaterThanOrEqual" secondItem="0wM-S0-KTM" secondAttribute="bottom" constant="20" id="dAM-5h-lp7"/>
+                            <constraint firstItem="mR5-Dg-a07" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="en7-tK-ja3"/>
+                            <constraint firstItem="KsP-Yo-V8f" firstAttribute="top" secondItem="VTN-xE-xYX" secondAttribute="bottom" constant="20" id="fkG-sM-73F"/>
+                            <constraint firstItem="Yzu-Us-XK9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jTQ-eC-OCc"/>
+                            <constraint firstItem="KsP-Yo-V8f" firstAttribute="top" secondItem="mR5-Dg-a07" secondAttribute="bottom" constant="29" id="l2H-vv-U3G"/>
+                            <constraint firstItem="0wM-S0-KTM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="mTY-qv-VNd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mR5-Dg-a07" secondAttribute="trailing" constant="20" id="zeh-ch-a3c"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="l2H-vv-U3G"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="xhe-4T-uSP"/>
+                    <connections>
+                        <outlet property="customFontLabel" destination="0wM-S0-KTM" id="DkM-9E-NHN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1198" y="424"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="cYE-7I-h2P">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6sa-jB-phE" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uK6-Z4-OwT">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="tLx-ek-SOw"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o1O-yV-YA7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="386" y="424"/>
+        </scene>
+    </scenes>
+</document>
