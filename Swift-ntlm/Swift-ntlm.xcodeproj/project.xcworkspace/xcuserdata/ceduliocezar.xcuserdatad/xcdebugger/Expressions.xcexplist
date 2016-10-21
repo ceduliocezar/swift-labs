@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "ViewController.connection(NSURLConnection, didReceive : URLAuthenticationChallenge) -&gt; ():ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "challenge.protectionSpace.authenticationMethod">
+            </PersistentString>
+            <PersistentString
+               value = "NSURLAuthenticationMethodNTLM">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "WKWebViewViewController.webView(WKWebView, didReceive : URLAuthenticationChallenge, completionHandler : (URLSession.AuthChallengeDisposition, URLCredential?) -&gt; ()) -&gt; ():WKWebViewViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "challenge.previousFailureCount">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
